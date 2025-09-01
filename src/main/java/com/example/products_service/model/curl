@@ -1,0 +1,24 @@
+curl.exe -X POST http://localhost:8080/api/v1/products \-H "Content-Type: application/json" \-d '{"name": "Smartphone XYZ","price": 799.99,"category": "Electronics"}'
+
+curl.exe -X POST http://localhost:8080/api/v1/products `
+         -H "Content-Type: application/json" `
+         -d '{"name": "Smartphone XYZ", "price": "799.99", "category": "Electronics"}'
+
+curl.exe -X POST "http://localhost:8080/api/v1/products" `
+-H "Content-Type: application/json" `
+-d "{ \"name\": \"Smartphone XYZ\", \"price\": 799.99, \"category\": \"Electronics\" }"
+
+curl.exe -X POST http://localhost:8080/api/v1/products `
+         -H "Content-Type: application/json" `
+         -d "{ \"name\": \"Smartphone XYZ\", \"price\": 799.99, \"category\": \"Electronics\" }"
+
+         curl http://localhost:8081/api/v1/notifications/product-info/1
+
+         Invoke-WebRequest -Uri http://localhost:8080/api/v1/products `
+                           -Method POST `
+                           -Headers @{"Content-Type"="application/json"} `
+                           -Body '{ "name": "Smartphone XYZ", "price": 799.99, "category": "Electronics" }'
+
+Invoke-WebRequest -Uri http://localhost:8081/api/v1/notifications/product-info/4 `
+                  -Method GET `
+                  -Headers @{"Content-Type"="application/json"}

@@ -1,0 +1,53 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.5.5'
+	id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+description = 'Demo project for Spring Boot'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(17)
+	}
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    compileOnly 'org.projectlombok:lombok'
+    runtimeOnly 'com.h2database:h2' // Para la base de datos H2 en tiempo de ejecución
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test' // ¡Esta es crucial para JUnit 5!
+    testImplementation 'org.mockito:mockito-core:5.8.0' // O la versión que Spring Boot Starter Test traiga por defecto
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.10.0' // Explicitamente JUnit Jupiter API
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.10.0' // Explicitamente JUnit Jupiter Engine
+
+//    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+//	implementation 'org.springframework.boot:spring-boot-starter-web'
+//	compileOnly 'org.projectlombok:lombok'
+//	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+//	runtimeOnly 'com.h2database:h2'
+//	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+//    implementation 'org.springframework.boot:spring-boot-starter-webflux' // ¡Nueva dependencia para WebClient!
+//    implementation 'org.projectlombok:lombok'
+//    annotationProcessor 'org.projectlombok:lombok'
+//    testImplementation 'org.springframework.boot:spring-boot-starter-test' // Para JUnit 5
+//    testImplementation 'io.projectreactor:reactor-test' // Para pruebas reactivas si usas WebClient
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
